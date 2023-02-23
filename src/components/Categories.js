@@ -1,7 +1,9 @@
+import '../cat.css';
+
 function Categories() {
   return (
-    <div>
-      <h1>catCategories</h1>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <button type="button">Check status</button>
     </div>
   );
 }
