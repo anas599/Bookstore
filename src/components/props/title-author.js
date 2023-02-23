@@ -1,21 +1,20 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 
-function TitleAuthor({ name, author, className }) {
+function TitleAuthor({
+  name, author, category, className,
+}) {
   return (
     <div>
-      <h3 className={className}>
-        {name}
-      </h3>
-      <p>
-        {author}
-      </p>
+      <p>{category}</p>
+      <h3 className={className}>{name}</h3>
+      <p>{author}</p>
     </div>
   );
 }
 TitleAuthor.propTypes = {
   name: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
 };
 export default TitleAuthor;
