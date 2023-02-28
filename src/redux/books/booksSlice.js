@@ -8,11 +8,23 @@ export const booksSlice = createSlice({
   },
   reducers: {
     addBook: (state, action) => {
-      state.booksArray.push(action.payload);
+      const {
+        title, author, category,
+      } = action.payload;
+      const newAdd = {
+        item_id: `item${state.booksArray.length + 1}`,
+        title,
+        author,
+        category,
+      };
+      state.booksArray.push(newAdd);
     },
     removeBook: (state, action) => {
       const acp = action.payload;
-      state.booksArray = state.booksArray.filter((book) => book.item_id !== acp);
+      // eslint-disable-next-line no-param-reassign
+      state.booksArray = state.booksArray.filter(
+        (book) => book.item_id !== acp,
+      );
     },
   },
 });

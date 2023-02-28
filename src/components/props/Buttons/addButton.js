@@ -1,18 +1,30 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addBook } from '../../../redux/books/booksSlice';
 
-// function AddBook({ id, title, author }) {
-//   const handelClick = () => {
+function AddButton({
+  id, title, author, category,
+}) {
+  const dispatch = useDispatch();
 
-//   }
-//   return (
-//     <button type="button" id={id} title={title} onClick={onClick} author={author}>
-//       Add Book
-//     </button>
-//   );
-// }
-// AddBook.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   title: PropTypes.string.isRequired,
-//   onClick: PropTypes.func.isRequired,
-// };
-// export default AddBook;
+  const handleClick = () => {
+    dispatch(addBook({
+      id, title, author, category,
+    }));
+  };
+
+  return (
+    <button type="button" onClick={handleClick} id={id} title={title}>
+      Add Book
+    </button>
+  );
+}
+
+AddButton.propTypes = {
+  id: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+};
+
+export default AddButton;

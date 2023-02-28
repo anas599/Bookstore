@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import TitleAuthor from './props/title-author';
 import RemoveButton from './props/Buttons/removeButton';
 import { removeBook } from '../redux/books/booksSlice';
+import AddButton from './props/Buttons/addButton';
 
 function BookSection() {
   const booksArr2 = useSelector((state) => state.books.booksArray);
@@ -12,7 +13,6 @@ function BookSection() {
   };
 
   return (
-
     <>
       {booksArr2.map((book) => (
         <section className="bookDiv" key={book.item_id}>
@@ -32,7 +32,10 @@ function BookSection() {
                   </button>
                 </li>
                 <li>
-                  <RemoveButton id={book.item_id} onClick={() => handleClick(book.item_id)} />
+                  <RemoveButton
+                    id={book.item_id}
+                    onClick={() => handleClick(book.item_id)}
+                  />
                 </li>
                 <li>
                   <button type="button" id={book.item_id}>
@@ -64,7 +67,7 @@ function BookSection() {
         <form>
           <input placeholder="Book Title" className="bookTitle" />
           <input placeholder="Author" className="bookAuthor" />
-          <button type="button"> ADD BOOK</button>
+          <AddButton id="newBook" title="ll" author="mm" category="N/A" />
         </form>
       </section>
     </>
