@@ -1,12 +1,21 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import TitleAuthor from './props/title-author';
+import RemoveButton from './props/Buttons/removeButton';
+import { removeBook } from '../redux/books/booksSlice';
 
 function BookSection() {
   const booksArr2 = useSelector((state) => state.books.booksArray);
+  const dispatch = useDispatch();
+
+  const handleClick = (id) => {
+    dispatch(removeBook(id));
+  };
+
   return (
+
     <>
       {booksArr2.map((book) => (
-        <section className="bookDiv" key={book.id}>
+        <section className="bookDiv" key={book.item_id}>
           <div className="book">
             <TitleAuthor
               id={book.item_id}
@@ -18,13 +27,17 @@ function BookSection() {
             <div>
               <ul className="buttonsDiv">
                 <li>
-                  <button type="button">Comments</button>
+                  <button type="button" id={book.item_id}>
+                    Comments
+                  </button>
                 </li>
                 <li>
-                  <button type="button">Remove</button>
+                  <RemoveButton id={book.item_id} onClick={() => handleClick(book.item_id)} />
                 </li>
                 <li>
-                  <button type="button">Edit</button>
+                  <button type="button" id={book.item_id}>
+                    Edit
+                  </button>
                 </li>
               </ul>
             </div>

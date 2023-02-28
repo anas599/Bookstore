@@ -4,16 +4,15 @@ import booksArray2 from '../booksArr';
 export const booksSlice = createSlice({
   name: 'books',
   initialState: {
-    booksArray: booksArray2,
+    booksArray: [...booksArray2],
   },
   reducers: {
     addBook: (state, action) => {
       state.booksArray.push(action.payload);
     },
     removeBook: (state, action) => {
-      state.booksArray.filter(
-        (book) => book !== action.payload,
-      );
+      const acp = action.payload;
+      state.booksArray = state.booksArray.filter((book) => book.item_id !== acp);
     },
   },
 });
