@@ -1,9 +1,10 @@
 import { createSlice } from '@reduxjs/toolkit';
+import booksArray2 from '../booksArr';
 
 export const booksSlice = createSlice({
   name: 'books',
   initialState: {
-    booksArray: [],
+    booksArray: booksArray2,
   },
   reducers: {
     addBook: (state, action) => {
