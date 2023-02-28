@@ -1,15 +1,34 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import TitleAuthor from './props/title-author';
 import RemoveButton from './props/Buttons/removeButton';
-import { removeBook } from '../redux/books/booksSlice';
+import { removeBook, addBook } from '../redux/books/booksSlice';
 import AddButton from './props/Buttons/addButton';
 
 function BookSection() {
   const booksArr2 = useSelector((state) => state.books.booksArray);
   const dispatch = useDispatch();
+  const [title, setTitle] = useState('');
+  const [author, setAuthor] = useState('');
 
   const handleClick = (id) => {
     dispatch(removeBook(id));
+  };
+
+  const titleFunc = (event) => {
+    setTitle(event.target.value);
+  };
+  const authorFunc = (event) => {
+    setAuthor(event.target.value);
+  };
+
+  const handleAddBook = (event) => {
+    event.preventDefault();
+    dispatch(
+      addBook({
+        title, author,
+      }),
+    );
   };
 
   return (
@@ -64,10 +83,20 @@ function BookSection() {
       ))}
       <section className="newBook">
         <h3>ADD NEW BOOK</h3>
-        <form>
-          <input placeholder="Book Title" className="bookTitle" />
-          <input placeholder="Author" className="bookAuthor" />
-          <AddButton id="newBook" title="ll" author="mm" category="N/A" />
+        <form onSubmit={handleAddBook}>
+          <input
+            placeholder="Book Title"
+            className="bookTitle"
+            value={title}
+            onChange={titleFunc}
+          />
+          <input
+            placeholder="Author"
+            className="bookAuthor"
+            value={author}
+            onChange={authorFunc}
+          />
+          <AddButton id="newBook" title={title} author={author} category="N/A" />
         </form>
       </section>
     </>
