@@ -1,17 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit';
+import booksArray2 from '../booksArr';
 
 export const booksSlice = createSlice({
   name: 'books',
   initialState: {
-    booksArray: [],
+    booksArray: [...booksArray2],
   },
   reducers: {
     addBook: (state, action) => {
-      state.booksArray.push(action.payload);
+      const {
+        title, author, category,
+      } = action.payload;
+      const newAdd = {
+        item_id: `item${state.booksArray.length + 1}`,
+        title,
+        author,
+        category,
+      };
+      state.booksArray.push(newAdd);
     },
     removeBook: (state, action) => {
-      state.booksArray.filter(
-        (book) => book !== action.payload,
+      const acp = action.payload;
+      // eslint-disable-next-line no-param-reassign
+      state.booksArray = state.booksArray.filter(
+        (book) => book.item_id !== acp,
       );
     },
   },
