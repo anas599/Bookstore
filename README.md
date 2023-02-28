@@ -19,7 +19,7 @@
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
     - [Key Features](#key-features)
-  - 🚀<a href="https://anasdev.com/Math-magicians/">Live Demo</a>
+  - 🚀<a href="">Live Demo</a>
   - [💻 Getting Started](#getting-started)
   - [Setup1](#setup)
   - [Prerequisites](#prerequisites)
@@ -37,10 +37,10 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 Bookstore <a name="Video-Presenting"></a>
+<!-- # 📖 Bookstore <a name="Video-Presenting"></a>
 <a href="https://www.loom.com">
 Video presenting the features the Project
-</a>
+</a> -->
 # 📖 Bookstore <a name="about-project"></a>
 
 
@@ -175,7 +175,7 @@ Feel free to check the [issues page](../../issues/).
 <!-- ACKNOWLEDGEMENTS -->
 
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
-I would like to thank Microverse for training
+I would like to show my appreciation to Zeplin Project or providing such an amazing project to learn from
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
