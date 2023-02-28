@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 
 function TitleAuthor({
-  name, author, category, className,
+  name, author, category, className, id,
 }) {
   return (
-    <div>
+    <div id={id}>
       <p>{category}</p>
       <h3 className={className}>{name}</h3>
       <p>{author}</p>
@@ -16,5 +16,7 @@ TitleAuthor.propTypes = {
   author: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+
 };
 export default TitleAuthor;
