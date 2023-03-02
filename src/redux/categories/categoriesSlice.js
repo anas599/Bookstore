@@ -8,7 +8,7 @@ export const categoriesSlice = createSlice({
   reducers: {
     checkStatus: (state) => {
       state.categoriesArray.push('Under construction');
-      state.categoriesArray.split('');
+      state.categoriesArray.join('');
     },
   },
 });

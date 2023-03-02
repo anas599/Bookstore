@@ -1,21 +1,16 @@
-const booksArray2 = [
-  {
-    item_id: 'item1',
-    title: 'The Great Gatsby',
-    author: 'John Smith',
-    category: 'Fiction',
-  },
-  {
-    item_id: 'item2',
-    title: 'Anna Karenina',
-    author: 'Leo Tolstoy',
-    category: 'Fiction',
-  },
-  {
-    item_id: 'item3',
-    title: 'The Selfish Gene',
-    author: 'Richard Dawkins',
-    category: 'Nonfiction',
-  },
-];
-export default booksArray2;
+// const booksArray2 = {
+//   item1: [
+//     { category: 'Fiction', title: 'The Great Gatsby', author: 'John Smith' },
+//   ],
+//   item12: [
+//     { author: 'John Smith', title: 'The Great Gatsby', category: 'Fiction' },
+//   ],
+// };
+// function array(booksArray2) {
+//   for (let i = 0; i < booksArray2.length; i++) {
+//     const element = booksArray2[i];
+//     return element;
+//   }
+// }
+// console.log(array(Object.keys(booksArray2)));
+// // export default booksArray2;

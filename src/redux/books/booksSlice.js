@@ -1,33 +1,83 @@
-import { createSlice } from '@reduxjs/toolkit';
-import booksArray2 from '../booksArr';
+/* eslint-disable no-param-reassign */
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
 
+const apiBooks = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/sle5k5rybdX7Os5bLujA/books';
+
+export const getBooksArr = createAsyncThunk(
+  'books/getBooksArr',
+  async (_, thunkAPI) => {
+    try {
+      const response = await axios.get(apiBooks);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Error...');
+    }
+  },
+);
+
+export const deleteBookAPI = createAsyncThunk(
+  'books/removeBookFromAPI',
+  async (id, thunkAPI) => {
+    try {
+      const response = await axios.delete(`${apiBooks}/${id}`);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
+);
+
+export const addBookApi = createAsyncThunk(
+  'books/addBook',
+  async (book, thunkAPI) => {
+    try {
+      const response = await axios.post(apiBooks, book);
+      return response.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Error...');
+    }
+  },
+);
 export const booksSlice = createSlice({
   name: 'books',
   initialState: {
-    booksArray: [...booksArray2],
+    booksArray: [],
+    loading: false,
+    ifSucceed: false,
   },
-  reducers: {
-    addBook: (state, action) => {
-      const {
-        title, author, category,
-      } = action.payload;
-      const newAdd = {
-        item_id: `item${state.booksArray.length + 1}`,
-        title,
-        author,
-        category,
-      };
-      state.booksArray.push(newAdd);
+  extraReducers: {
+    [getBooksArr.pending]: (state) => {
+      state.loading = false;
     },
-    removeBook: (state, action) => {
-      const acp = action.payload;
-      // eslint-disable-next-line no-param-reassign
-      state.booksArray = state.booksArray.filter(
-        (book) => book.item_id !== acp,
-      );
+    [getBooksArr.fulfilled]: (state, action) => {
+      state.loading = true;
+      state.booksArray = action.payload;
+    },
+    [getBooksArr.rejected]: (state) => {
+      state.loading = false;
+    },
+    [addBookApi.pending]: (state) => {
+      state.ifSucceed = false;
+    },
+    [addBookApi.fulfilled]: (state) => {
+      state.ifSucceed = true;
+    },
+    [addBookApi.rejected]: (state) => {
+      state.ifSucceed = false;
+    },
+    [deleteBookAPI.pending]: (state) => {
+      state.ifSucceed = false;
+    },
+    [deleteBookAPI.fulfilled]: (state) => {
+      state.ifSucceed = true;
+    },
+    [deleteBookAPI.rejected]: (state) => {
+      state.ifSucceed = false;
     },
   },
 });
 
 export const { addBook, removeBook } = booksSlice.actions;
+
 export default booksSlice.reducer;
