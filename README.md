@@ -32,7 +32,6 @@
 - [🤝 Contributing](#contributing)
 - [⭐️ Show your support](#support)
 - [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
 - [📝 License](#license)
 
 <!-- PROJECT DESCRIPTION -->
@@ -44,7 +43,7 @@ Video presenting the features the Project
 # 📖 Bookstore <a name="about-project"></a>
 
 
-**Bookstore** is a mobile and Desktop responsive website to demonstrate my knowledge in React and javascript 
+**Bookstore** is a mobile and Desktop responsive website to demonstrate my knowledge in React with redux and javascript 
 
 ## 🛠 Built With <a name="React & JavaScript"></a>
 
@@ -74,7 +73,7 @@ Video presenting the features the Project
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Live Demo Link]()
+- [Coming Soon...]()
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -177,13 +176,6 @@ Feel free to check the [issues page](../../issues/).
 ## 🙏 Acknowledgments <a name="acknowledgements"></a>
 I would like to show my appreciation to Zeplin Project or providing such an amazing project to learn from
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-<!-- FAQ (optional) -->
-
-## ❓ FAQ <a name="faq"></a>
-
-> 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
