@@ -24,58 +24,76 @@ function BookSection() {
   const authorFunc = (event) => {
     setAuthor(event.target.value);
   };
+  const handleAddBook = (event) => {
+    event.preventDefault();
+    dispatch(
+      addBook({
+        title,
+        author,
+        category: 'N/A',
+      }),
+    );
+    setTitle('');
+    setAuthor('');
+  };
+
+  // const firstItemKey = Object.keys(booksArray);
+  // const firstItemValue = Object.values(booksArray)[0];
 
   return (
     <>
-      {Object.values(booksArray).map((item) => item.map((book) => (
-        <section className="bookDiv" key={book.title}>
-          <div className="book">
-            <TitleAuthor
-              key={book.category}
-              id={book.category}
-              category={book.category}
-              title={book.title}
-              author={book.author}
-              className="bookName"
-            />
-            <div>
-              <ul className="buttonsDiv">
-                <li>
-                  <button type="button" id={book.title}>
-                    Comments
-                  </button>
-                </li>
-                <li>
-                  <RemoveButton
-                    id={book.title}
-                    onClick={() => handleClick(book.title)}
-                  />
-                </li>
-                <li>
-                  <button type="button" id={book.title}>
-                    Edit
-                  </button>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className="completion">
-            <div className="circle" />
-            <div>
-              <h3>64%</h3>
-              <p>Completed</p>
-            </div>
-          </div>
-          <div className="bar" />
-          <div className="progress">
-            <p>Current Chart</p>
-            <p>Chapter 17</p>
-            <button type="button" className="updateBtn">
-              UPDATE PROGRESS
-            </button>
-          </div>
-        </section>
-      )))}
+      {Object.entries(booksArray).map(([firstItemKey, books]) => (
+        <div key={firstItemKey} id={firstItemKey}>
+          {books.map((book) => (
+            <section className="bookDiv" key={book.title}>
+              <div className="book">
+                <TitleAuthor
+                  id={firstItemKey}
+                  category={book.category}
+                  title={book.title}
+                  author={book.author}
+                  className="bookName"
+                />
+                <div>
+                  <ul className="buttonsDiv">
+                    <li>
+                      <button type="button" id={book.title}>
+                        Comments
+                      </button>
+                    </li>
+                    <li>
+                      <RemoveButton
+                        id={book.title}
+                        onClick={() => handleClick(book.title)}
+                      />
+                    </li>
+                    <li>
+                      <button type="button" id={book.title}>
+                        Edit
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div className="completion">
+                <div className="circle" />
+                <div>
+                  <h3>64%</h3>
+                  <p>Completed</p>
+                </div>
+              </div>
+              <div className="bar" />
+              <div className="progress">
+                <p>Current Chart</p>
+                <p>Chapter 17</p>
+                <button type="button" className="updateBtn">
+                  UPDATE PROGRESS
+                </button>
+              </div>
+            </section>
+          ))}
+        </div>
+      ))}
       <section className="newBook">
         <h3>ADD NEW BOOK</h3>
         <form onSubmit={handleAddBook}>
@@ -101,19 +119,6 @@ function BookSection() {
       </section>
     </>
   );
-
-  function handleAddBook(event) {
-    event.preventDefault();
-    dispatch(
-      addBook({
-        title,
-        author,
-        category: 'N/A',
-      }),
-    );
-    setTitle('');
-    setAuthor('');
-  }
 }
 
 export default BookSection;
