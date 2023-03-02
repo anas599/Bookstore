@@ -1,26 +1,26 @@
+/* eslint-disable camelcase */
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { nanoid } from '@reduxjs/toolkit';
 import TitleAuthor from './props/title-author';
 import RemoveButton from './props/Buttons/removeButton';
-import { removeBook, addBook, getBooksArr } from '../redux/books/booksSlice';
+import {
+  addBook, getBooksArr,
+} from '../redux/books/booksSlice';
 import AddButton from './props/Buttons/addButton';
 
 function BookSection() {
   const dispatch = useDispatch();
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
+  const [item_id] = useState('');
   useEffect(() => {
     dispatch(getBooksArr());
   }, [dispatch]);
   const booksArray = useSelector((state) => state.books.booksArray);
-  const handleClick = (id) => {
-    dispatch(removeBook(id));
-  };
-
   const titleFunc = (event) => {
     setTitle(event.target.value);
   };
-
   const authorFunc = (event) => {
     setAuthor(event.target.value);
   };
@@ -28,22 +28,18 @@ function BookSection() {
     event.preventDefault();
     dispatch(
       addBook({
+        item_id,
         title,
         author,
-        category: 'N/A',
       }),
     );
     setTitle('');
     setAuthor('');
   };
-
-  // const firstItemKey = Object.keys(booksArray);
-  // const firstItemValue = Object.values(booksArray)[0];
-
   return (
     <>
       {Object.entries(booksArray).map(([firstItemKey, books]) => (
-        <div key={firstItemKey} id={firstItemKey}>
+        <div key={firstItemKey}>
           {books.map((book) => (
             <section className="bookDiv" key={book.title}>
               <div className="book">
@@ -57,18 +53,17 @@ function BookSection() {
                 <div>
                   <ul className="buttonsDiv">
                     <li>
-                      <button type="button" id={book.title}>
-                        Comments
-                      </button>
+                      <button type="button">Comments</button>
+                    </li>
+                    <li key={firstItemKey}>
+                      <RemoveButton id={firstItemKey} />
                     </li>
                     <li>
-                      <RemoveButton
-                        id={book.title}
-                        onClick={() => handleClick(book.title)}
-                      />
-                    </li>
-                    <li>
-                      <button type="button" id={book.title}>
+                      <button
+                        type="button"
+                        key={firstItemKey}
+                        id={firstItemKey}
+                      >
                         Edit
                       </button>
                     </li>
@@ -110,7 +105,7 @@ function BookSection() {
             onChange={authorFunc}
           />
           <AddButton
-            id="newBook"
+            item_id={nanoid()}
             title={title}
             author={author}
             category="N/A"

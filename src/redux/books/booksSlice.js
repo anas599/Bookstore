@@ -1,9 +1,8 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import axios from 'axios';
 
-const apiBooks = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/zpVDBnBpLThUE35BUZY9/books';
+const apiBooks = 'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/sle5k5rybdX7Os5bLujA/books';
 
 export const getBooksArr = createAsyncThunk(
   'books/getBooksArr',
@@ -17,14 +16,14 @@ export const getBooksArr = createAsyncThunk(
   },
 );
 
-export const deleteBook = createAsyncThunk(
-  'books/deleteBook',
+export const deleteBookAPI = createAsyncThunk(
+  'books/removeBookFromAPI',
   async (id, thunkAPI) => {
     try {
-      await axios.delete(`${apiBooks}/${id}`);
-      return id;
+      const response = await axios.delete(`${apiBooks}/${id}`);
+      return response.data;
     } catch (error) {
-      return thunkAPI.rejectWithValue('Book does not exist');
+      return thunkAPI.rejectWithValue(error);
     }
   },
 );
@@ -33,6 +32,7 @@ export const addBookApi = createAsyncThunk(
   'books/addBook',
   async (book, thunkAPI) => {
     try {
+      console.log(book);
       const response = await axios.post(apiBooks, book);
       return response.data;
     } catch (error) {
@@ -58,13 +58,24 @@ export const booksSlice = createSlice({
     [getBooksArr.rejected]: (state) => {
       state.loading = false;
     },
-    [deleteBook.fulfilled]: (state, action) => {
-      state.booksArray = state.booksArray.filter(
-        (book) => book.item_id !== action.payload,
-      );
+    [addBookApi.pending]: (state) => {
+      state.loading = true;
     },
     [addBookApi.fulfilled]: (state, action) => {
-      state.booksArray.push(action.payload);
+      state.loading = false;
+      state.booksArray = action.payload;
+    },
+    [addBookApi.rejected]: (state) => {
+      state.loading = false;
+    },
+    [deleteBookAPI.pending]: (state) => {
+      state.ifSucceed = false;
+    },
+    [deleteBookAPI.fulfilled]: (state) => {
+      state.ifSucceed = true;
+    },
+    [deleteBookAPI.rejected]: (state) => {
+      state.ifSucceed = false;
     },
   },
 });
