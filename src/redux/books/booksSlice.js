@@ -32,7 +32,6 @@ export const addBookApi = createAsyncThunk(
   'books/addBook',
   async (book, thunkAPI) => {
     try {
-      console.log(book);
       const response = await axios.post(apiBooks, book);
       return response.data;
     } catch (error) {
@@ -61,9 +60,8 @@ export const booksSlice = createSlice({
     [addBookApi.pending]: (state) => {
       state.loading = true;
     },
-    [addBookApi.fulfilled]: (state, action) => {
+    [addBookApi.fulfilled]: (state) => {
       state.loading = false;
-      state.booksArray = action.payload;
     },
     [addBookApi.rejected]: (state) => {
       state.loading = false;
