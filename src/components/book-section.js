@@ -19,6 +19,10 @@ function BookSection() {
   useEffect(() => {
     dispatch(getBooksArr());
   }, [dispatch, ifSucceed]);
+  useEffect(() => {
+    setTitle('');
+    setAuthor('');
+  }, [booksArray]);
   const titleFunc = (event) => {
     setTitle(event.target.value);
   };
