@@ -39,32 +39,32 @@ export const addBookApi = createAsyncThunk(
     }
   },
 );
-
 export const booksSlice = createSlice({
   name: 'books',
   initialState: {
     booksArray: [],
     loading: false,
+    ifSucceed: false,
   },
   extraReducers: {
     [getBooksArr.pending]: (state) => {
-      state.loading = true;
+      state.loading = false;
     },
     [getBooksArr.fulfilled]: (state, action) => {
-      state.loading = false;
+      state.loading = true;
       state.booksArray = action.payload;
     },
     [getBooksArr.rejected]: (state) => {
       state.loading = false;
     },
     [addBookApi.pending]: (state) => {
-      state.loading = true;
+      state.ifSucceed = false;
     },
     [addBookApi.fulfilled]: (state) => {
-      state.loading = false;
+      state.ifSucceed = true;
     },
     [addBookApi.rejected]: (state) => {
-      state.loading = false;
+      state.ifSucceed = false;
     },
     [deleteBookAPI.pending]: (state) => {
       state.ifSucceed = false;

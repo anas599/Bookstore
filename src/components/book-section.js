@@ -14,10 +14,11 @@ function BookSection() {
   const [title, setTitle] = useState('');
   const [author, setAuthor] = useState('');
   const [item_id] = useState('');
+  const booksArray = useSelector((state) => state.books.booksArray);
+  const ifSucceed = useSelector((store) => store.books.ifSucceed);
   useEffect(() => {
     dispatch(getBooksArr());
-  }, [dispatch]);
-  const booksArray = useSelector((state) => state.books.booksArray);
+  }, [dispatch, ifSucceed]);
   const titleFunc = (event) => {
     setTitle(event.target.value);
   };
@@ -89,8 +90,8 @@ function BookSection() {
           ))}
         </div>
       ))}
+      <h3>ADD NEW BOOK</h3>
       <section className="newBook">
-        <h3>ADD NEW BOOK</h3>
         <form onSubmit={handleAddBook}>
           <input
             placeholder="Book Title"
