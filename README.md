@@ -72,8 +72,7 @@ Video presenting the features the Project
 <!-- LIVE DEMO -->
 
 ## 🚀 Live Demo <a name="live-demo"></a>
-
-- [Coming Soon...]()
+  <a href="https://anasdev.com/Bookstore/">Live Demo</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
