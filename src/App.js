@@ -21,7 +21,7 @@ function App() {
             </ul>
           </nav>
         </div>
-        <img src="/accIcon.png" alt="accountIcon" style={{ width: '3rem' }} />
+        <img src="/accIcon.png" alt="accountIcon" />
       </header>
       <Routes>
         <Route path="/" element={<Books />} />
