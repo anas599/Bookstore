@@ -94,29 +94,29 @@ function BookSection() {
           ))}
         </div>
       ))}
-      <h3>ADD NEW BOOK</h3>
-      <section className="newBook">
-        <form onSubmit={handleAddBook}>
-          <input
-            placeholder="Book Title"
-            className="bookTitle"
-            value={title}
-            onChange={titleFunc}
-          />
-          <input
-            placeholder="Author"
-            className="bookAuthor"
-            value={author}
-            onChange={authorFunc}
-          />
-          <AddButton
-            item_id={nanoid()}
-            title={title}
-            author={author}
-            category="N/A"
-          />
-        </form>
-      </section>
+      <h3 style={{ color: 'rgba(0, 0, 0, 0.35)', paddingLeft: '7rem' }}>ADD NEW BOOK</h3>
+      {/* <section className="newBook"> */}
+      <form onSubmit={handleAddBook}>
+        <input
+          placeholder="Book Title"
+          className="bookTitle"
+          value={title}
+          onChange={titleFunc}
+        />
+        <input
+          placeholder="Author"
+          className="bookAuthor"
+          value={author}
+          onChange={authorFunc}
+        />
+        <AddButton
+          item_id={nanoid()}
+          title={title}
+          author={author}
+          category="N/A"
+        />
+      </form>
+      {/* </section> */}
     </>
   );
 }

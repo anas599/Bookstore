@@ -8,19 +8,20 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>
-          BOOKSTORE CMS
-        </h1>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/categories">categories</Link>
-            </li>
-            <li>
-              <Link to="/">Books</Link>
-            </li>
-          </ul>
-        </nav>
+        <div>
+          <h1>BOOKSTORE CMS</h1>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/categories">categories</Link>
+              </li>
+              <li>
+                <Link to="/">Books</Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <img src="/accIcon.png" alt="accountIcon" style={{ width: '3rem' }} />
       </header>
       <Routes>
         <Route path="/" element={<Books />} />
