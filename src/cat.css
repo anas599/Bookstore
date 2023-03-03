@@ -7,9 +7,7 @@
 button {
   color: white;
   border: none;
-
-  /* width: 5.5rem; */
-  height: 2.813rem;
+  height: 1.813rem;
   border-radius: 3px;
   background-color: var(--azure);
 }
