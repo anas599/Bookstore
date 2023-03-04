@@ -16,15 +16,15 @@ function App() {
                 <Link to="/categories">categories</Link>
               </li>
               <li>
-                <Link to="/books">Books</Link>
+                <Link to="/">Books</Link>
               </li>
             </ul>
           </nav>
         </div>
-        <img src="/accIcon.png" alt="accountIcon" />
+        <img src="./accIcon.png" alt="accountIcon" />
       </header>
       <Routes>
-        <Route path="/books" element={<Books />} />
+        <Route path="/" element={<Books />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
     </div>
