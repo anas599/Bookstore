@@ -16,7 +16,7 @@ function App() {
                 <Link to="/categories">categories</Link>
               </li>
               <li>
-                <Link to="/">Books</Link>
+                <Link to="/books">Books</Link>
               </li>
             </ul>
           </nav>
@@ -24,7 +24,7 @@ function App() {
         <img src="/accIcon.png" alt="accountIcon" />
       </header>
       <Routes>
-        <Route path="/" element={<Books />} />
+        <Route path="/books" element={<Books />} />
         <Route path="/categories" element={<Categories />} />
       </Routes>
     </div>
