@@ -4,6 +4,8 @@ import React from 'react';
 import Categories from './components/Categories';
 import Books from './components/books';
 
+const AccountIcon = require('./Assets/accIcon.png');
+
 function App() {
   return (
     <div className="App">
@@ -21,7 +23,7 @@ function App() {
             </ul>
           </nav>
         </div>
-        <img src="/accIcon.png" alt="accountIcon" />
+        <img src={AccountIcon} alt="accountIcon" />
       </header>
       <Routes>
         <Route path="/books" element={<Books />} />
