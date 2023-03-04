@@ -5,7 +5,7 @@
 
 <div align="center">
 
-  <img src="./src/Assets/bookstore-Logo.png" alt="logo" width="140"  height="auto" />
+  <img src="./src/Assets/books-icon.svg" alt="logo" width="140"  height="auto" />
   <br/>
   <h3><b>Bookstore</b></h3>
 
